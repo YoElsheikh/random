@@ -2,21 +2,22 @@
 using namespace std; 
 
 
+//////////////////////////////////////////////////////////////////
+////////////////////// INTRO ////////////////////////////////////
+////////////////////////////////////////////////////////////////
 
-// INTRO //
+/*In contrast to OOP there is Procedural Programming that devied the program 
+into a set of functions, so the data is stored in a number of variables 
+the functions operate on this data, this style is simplea and "low level",
+meaning that it doesn't incorporate a level f abstraction.
+this style is referred to as "spaghetti code", where there are many
+interdependencies between the variables that the pprogrammer will have to
+copy and paste the same code over and over again and any change in one of the 
+variables will emply changing it in every place where it had appeared
+making things more confusing to the programmer and making the program 
+prone to bugs and errors.*/
 
-//In contrast to OOP there is Procedural Programming that devied the program 
-//into a set of functions, so the data is stored in a number of variables 
-//the functions operate on this data, this style is simplea and "low level",
-//meaning that it doesn't incorporate a level f abstraction.
-//this style is referred to as "spaghetti code", where there are many
-//interdependencies between the variables that the pprogrammer will have to
-//copy and paste the same code over and over again and any change in one of the 
-//variables will emply changing it in every place where it had appeared
-//making things more confusing to the programmer and making the program 
-//prone to bugs and errors.
-
-// Encapsulations //
+/////////// Encapsulations /////////
 
 // related variables and functions are grouped into a unit, 
 //which is called an object, an object contains:
@@ -38,9 +39,7 @@ function getWage(baseSalary, overtime, rate) {
 	return baseSalary = (overtime * rate);
 }
 
-//OO:
-
-
+// in OO:
 let employee = {
 	baseSalary: 30_000,
 	overtime: 10,
@@ -84,12 +83,12 @@ int main()
 
 
 
-// Abstraction //
+//////////// Abstraction ////////////////
 
-//For simpler interface, this one is obvious by looking at any OO program
-//it also reduces the impact of change, entailing that the private code or public 
-//code is not touched in the rest of the program, so if changes are made  
-//somewhere in the code this will not necessarily cause a chain reaction elsewhere
+/*For simpler interface, this one is obvious by looking at any OO program
+it also reduces the impact of change, entailing that the private code or public 
+code is not touched in the rest of the program, so if changes are made  
+somewhere in the code this will not necessarily cause a chain reaction elsewhere*/
 
 class Summation { 
    private: 
@@ -114,12 +113,12 @@ int main()
 //to any code other than the  summation
 
 
-// Inheritance //
+///////////////// Inheritance ///////////////
 
-//It's somply a method that allows the elimination of redundant code
-//entailing the possibility of inheriting similar !!Properties + Methods!! fronn
-//one class to the other, instead of redefining them everytime a similar class is
-//declared
+/*It's somply a method that allows the elimination of redundant code
+entailing the possibility of inheriting similar !!Properties + Methods!! fronn
+one class to the other, instead of redefining them everytime a similar class is
+declared*/
 
 class A
 {
@@ -151,6 +150,137 @@ class D : private A   // 'private' is default for classes
     // y is private
     // z is not accessible from D
 };
+
+
+///// Types of Inheritance:
+
+/// 1.Single Inheritance:
+/* A class is allowed to inherit from only one class. i.e. one sub class is inherited by
+ one base class only.*/
+ 
+//Syntax:
+ class subclass_name : access_mode base_class
+{
+  //body of subclass
+};
+
+//Example:
+
+// base class
+class Vehicle {
+  public:
+    Vehicle()
+    {
+      cout << "This is a Vehicle" << endl;
+    }
+};
+ 
+// sub class derived from a single base classes
+class Car: public Vehicle{
+ 
+};
+ 
+// main function
+int main()
+{  
+    // creating object of sub class will
+    // invoke the constructor of base classes
+    Car obj;
+    return 0;
+}
+
+/// 2.Multiple Inheritance:
+
+//Syntax:
+class subclass_name : access_mode base_class1, access_mode base_class2, ....
+{
+  //body of subclass
+};
+
+//Example:
+// first base class
+class Vehicle {
+  public:
+    Vehicle()
+    {
+      cout << "This is a Vehicle" << endl;
+    }
+};
+ 
+// second base class
+class FourWheeler {
+  public:
+    FourWheeler()
+    {
+      cout << "This is a 4 wheeler Vehicle" << endl;
+    }
+};
+ 
+// sub class derived from two base classes
+class Car: public Vehicle, public FourWheeler {
+ 
+};
+ 
+// main function
+int main()
+{  
+    // creating object of sub class will
+    // invoke the constructor of base classes
+    
+    Car obj;
+    return 0;
+}
+
+
+/// 3. Multilevel Inheritance:
+// base class
+class Vehicle
+{
+  public:
+    Vehicle()
+    {
+      cout << "This is a Vehicle" << endl;
+    }
+};
+ 
+// first sub_class derived from class vehicle
+class fourWheeler: public Vehicle
+{  public:
+    fourWheeler()
+    {
+      cout<<"Objects with 4 wheels are vehicles"<<endl;
+    }
+};
+// sub class derived from the derived base class fourWheeler
+class Car: public fourWheeler{
+   public:
+     Car()
+     {
+       cout<<"Car has 4 Wheels"<<endl;
+     }
+};
+ 
+// main function
+int main()
+{  
+    //creating object of sub class will
+    //invoke the constructor of base classes
+    Car obj;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Polymorphism //
 
