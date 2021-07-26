@@ -5,7 +5,7 @@ using namespace std;
 
 // INTRO //
 
-//In contrast to OOP there is Procedural Programming that devides the program 
+//In contrast to OOP there is Procedural Programming that devied the program 
 //into a set of functions, so the data is stored in a number of variables 
 //the functions operate on this data, this style is simplea and "low level",
 //meaning that it doesn't incorporate a level f abstraction.
@@ -25,16 +25,6 @@ using namespace std;
 // functions = methods
 
 
-#include<graphics.h>
-#include<conio.h>
-int main()
-{
-int gmode= DETECT ,gm;
-initgraph(&gmode,&gm,"c://tc//bgi");
-readimagefile("encaps1.png",100,100,300,300);// use your pic name instead of saad and save your pic //and code in same folder.......
-getch();
-closegraph();
-}
 
 
 //Encapsulation example:
@@ -131,7 +121,36 @@ int main()
 //one class to the other, instead of redefining them everytime a similar class is
 //declared
 
-
+class A
+{
+public:
+    int x;
+protected:
+    int y;
+private:
+    int z;
+};
+ 
+class B : public A //same as class A but the private properties are not accessible
+{
+    // x is public
+    // y is protected
+    // z is not accessible from B
+};
+ 
+class C : protected A  //sets public and protected to protected but still z is not accessible
+{
+    // x is protected
+    // y is protected
+    // z is not accessible from C
+};
+ 
+class D : private A   // 'private' is default for classes
+{
+    // x is private
+    // y is private
+    // z is not accessible from D
+};
 
 // Polymorphism //
 
